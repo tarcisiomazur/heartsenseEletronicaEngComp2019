@@ -1,0 +1,126 @@
+#! /usr/bin/vvp
+:ivl_version "10.2 (stable)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "vhdl_sys";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x562d177b3630 .scope module, "transmitter_tb" "transmitter_tb" 2 4;
+ .timescale 0 0;
+v0x562d177da920_0 .var "clk", 0 0;
+v0x562d177da9e0_0 .var "send", 0 0;
+S_0x562d177b37b0 .scope module, "t1" "transmitter" 2 8, 3 1 0, S_0x562d177b3630;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "TXD"
+    .port_info 1 /INPUT 8 "tx_data"
+    .port_info 2 /INPUT 1 "clk"
+    .port_info 3 /INPUT 1 "reset"
+    .port_info 4 /OUTPUT 1 "tx_busy"
+    .port_info 5 /INPUT 1 "send"
+P_0x562d177b73f0 .param/l "waiting" 0 3 9, C4<0>;
+P_0x562d177b7430 .param/l "writing" 0 3 10, C4<1>;
+L_0x562d177afcf0 .functor BUFZ 1, v0x562d177da540_0, C4<0>, C4<0>, C4<0>;
+L_0x562d177afe00 .functor BUFZ 1, v0x562d177da7a0_0, C4<0>, C4<0>, C4<0>;
+v0x562d1777a1a0_0 .net "TXD", 0 0, L_0x562d177afe00;  1 drivers
+v0x562d177da1f0_0 .net "clk", 0 0, v0x562d177da920_0;  1 drivers
+v0x562d177da2b0_0 .var/i "count", 31 0;
+L_0x7f019e378060 .functor BUFT 1, C4<0>, C4<0>, C4<0>, C4<0>;
+v0x562d177da370_0 .net "reset", 0 0, L_0x7f019e378060;  1 drivers
+v0x562d177da430_0 .net "send", 0 0, v0x562d177da9e0_0;  1 drivers
+v0x562d177da540_0 .var "status", 0 0;
+v0x562d177da600_0 .net "tx_busy", 0 0, L_0x562d177afcf0;  1 drivers
+L_0x7f019e378018 .functor BUFT 1, C4<00010001>, C4<0>, C4<0>, C4<0>;
+v0x562d177da6c0_0 .net "tx_data", 0 7, L_0x7f019e378018;  1 drivers
+v0x562d177da7a0_0 .var "txd_reg", 0 0;
+E_0x562d177af670 .event posedge, v0x562d177da1f0_0;
+    .scope S_0x562d177b37b0;
+T_0 ;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x562d177da7a0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x562d177da540_0, 0, 1;
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v0x562d177da2b0_0, 0, 32;
+    %end;
+    .thread T_0;
+    .scope S_0x562d177b37b0;
+T_1 ;
+    %wait E_0x562d177af670;
+    %load/vec4 v0x562d177da370_0;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_1.0, 8;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x562d177da540_0, 0, 1;
+    %jmp T_1.1;
+T_1.0 ;
+    %load/vec4 v0x562d177da540_0;
+    %cmpi/e 0, 0, 1;
+    %jmp/0xz  T_1.2, 4;
+    %load/vec4 v0x562d177da430_0;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_1.4, 8;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x562d177da540_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x562d177da7a0_0, 0, 1;
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v0x562d177da2b0_0, 0, 32;
+T_1.4 ;
+    %jmp T_1.3;
+T_1.2 ;
+    %load/vec4 v0x562d177da2b0_0;
+    %cmpi/s 8, 0, 32;
+    %jmp/0xz  T_1.6, 5;
+    %load/vec4 v0x562d177da6c0_0;
+    %pushi/vec4 7, 0, 34;
+    %load/vec4 v0x562d177da2b0_0;
+    %pad/s 34;
+    %sub;
+    %part/s 1;
+    %store/vec4 v0x562d177da7a0_0, 0, 1;
+    %load/vec4 v0x562d177da2b0_0;
+    %pushi/vec4 1, 0, 32;
+    %add;
+    %store/vec4 v0x562d177da2b0_0, 0, 32;
+    %jmp T_1.7;
+T_1.6 ;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x562d177da540_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x562d177da7a0_0, 0, 1;
+T_1.7 ;
+T_1.3 ;
+T_1.1 ;
+    %jmp T_1;
+    .thread T_1;
+    .scope S_0x562d177b3630;
+T_2 ;
+    %vpi_call 2 16 "$dumpfile", "transmitter_tb.vcd" {0 0 0};
+    %vpi_call 2 17 "$dumpvars", 32'sb00000000000000000000000000000000, S_0x562d177b3630 {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x562d177da920_0, 0, 1;
+    %delay 20, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x562d177da9e0_0, 0, 1;
+    %delay 20, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x562d177da9e0_0, 0, 1;
+    %delay 200, 0;
+    %vpi_call 2 23 "$finish" {0 0 0};
+    %end;
+    .thread T_2;
+    .scope S_0x562d177b3630;
+T_3 ;
+    %delay 10, 0;
+    %load/vec4 v0x562d177da920_0;
+    %nor/r;
+    %store/vec4 v0x562d177da920_0, 0, 1;
+    %jmp T_3;
+    .thread T_3;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "transmitter_tb.v";
+    "./transmitter.v";

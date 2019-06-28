@@ -1,0 +1,107 @@
+$date
+	Fri Jun 28 00:59:48 2019
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module transmitter_tb $end
+$var reg 1 ! clk $end
+$var reg 1 " send $end
+$scope module t1 $end
+$var wire 1 # TXD $end
+$var wire 1 ! clk $end
+$var wire 1 $ reset $end
+$var wire 1 " send $end
+$var wire 1 % tx_busy $end
+$var wire 8 & tx_data [0:7] $end
+$var reg 1 ' status $end
+$var reg 1 ( txd_reg $end
+$var integer 32 ) count [31:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b0 )
+1(
+0'
+b10001 &
+0%
+0$
+1#
+x"
+0!
+$end
+#10
+1!
+#20
+0!
+1"
+#30
+0#
+0(
+1%
+1'
+1!
+#40
+0!
+0"
+#50
+b1 )
+1!
+#60
+0!
+#70
+b10 )
+1!
+#80
+0!
+#90
+b11 )
+1!
+#100
+0!
+#110
+b100 )
+1#
+1(
+1!
+#120
+0!
+#130
+b101 )
+0#
+0(
+1!
+#140
+0!
+#150
+b110 )
+1!
+#160
+0!
+#170
+b111 )
+1!
+#180
+0!
+#190
+b1000 )
+1#
+1(
+1!
+#200
+0!
+#210
+0%
+0'
+1!
+#220
+0!
+#230
+1!
+#240
+0!

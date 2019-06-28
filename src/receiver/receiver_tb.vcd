@@ -1,0 +1,144 @@
+$date
+	Fri Jun 28 00:57:31 2019
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module receiver_tb $end
+$var reg 1 ! RXD $end
+$var reg 1 " clk $end
+$var reg 1 # reset $end
+$scope module r1 $end
+$var wire 1 ! RXD $end
+$var wire 1 " clk $end
+$var wire 1 # reset $end
+$var wire 1 $ rx_busy $end
+$var wire 8 % rx_data [0:7] $end
+$var reg 8 & buffer [0:7] $end
+$var reg 1 ' status $end
+$var integer 32 ( count [31:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b0 (
+0'
+b0 &
+b0 %
+0$
+x#
+0"
+1!
+$end
+#10
+1"
+#20
+0"
+0!
+#30
+1$
+1'
+1"
+#40
+0"
+#50
+b1 (
+1"
+#60
+0"
+1!
+#70
+b10 (
+b1000000 %
+b1000000 &
+1"
+#80
+0"
+0!
+#90
+b11 (
+1"
+#100
+0"
+1!
+#110
+b100 (
+b1010000 %
+b1010000 &
+1"
+#120
+0"
+0!
+#130
+b101 (
+1"
+#140
+0"
+1!
+#150
+b110 (
+b1010100 %
+b1010100 &
+1"
+#160
+0"
+0!
+#170
+b111 (
+1"
+#180
+0"
+1!
+#190
+b1000 (
+b1010101 %
+b1010101 &
+1"
+#200
+0"
+#210
+0$
+0'
+1"
+#220
+0"
+#230
+1"
+#240
+0"
+#250
+1"
+#260
+0"
+#270
+1"
+#280
+0"
+#290
+1"
+#300
+0"
+#310
+1"
+#320
+0"
+#330
+1"
+#340
+0"
+#350
+1"
+#360
+0"
+#370
+1"
+#380
+0"
+#390
+1"
+#400
+0"
